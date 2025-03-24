@@ -40,3 +40,11 @@ typing_extensions==4.12.2
 tzlocal==5.3.1
 uritemplate==4.1.1
 urllib3==2.3.0
+python-dotenv
+openai
+python-telegram-bot
+google-api-python-client
+google-auth
+google-auth-oauthlib
+requests
+
