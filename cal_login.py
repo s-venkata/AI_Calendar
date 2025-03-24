@@ -15,17 +15,23 @@ SCOPES = ['https://www.googleapis.com/auth/calendar']
 def get_calendar():
     user_creds = None
 
+    # Load existing token if it exists
+    if os.path.exists("token.json"):
+        user_creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+
     if not user_creds or not user_creds.valid:
         if user_creds and user_creds.expired and user_creds.refresh_token:
             user_creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
-            user_creds = flow.run_local_server(port=0)
+            user_creds = flow.run_local_server(port=0, access_type='offline', prompt='consent')
 
-        # Save the new token only if creds is valid
-        if user_creds:
-            with open("token.json", "w") as token_file:
-                token_file.write(user_creds.to_json())
+        with open("token.json", "w") as token_file:
+            token_file.write(user_creds.to_json())
 
     service = build("calendar", "v3", credentials=user_creds)
     return service
+
+
+
+
