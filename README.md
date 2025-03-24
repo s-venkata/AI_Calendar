@@ -1,6 +1,6 @@
 AI Calendar Assistant Bot 🤖
 
-An intelligent Telegram bot that parses natural language messages to automatically create events in your Google Calendar using OpenAI's API.
+An intelligent Telegram bot that parses user messages to automatically create events in your Google Calendar using OpenAI's API.
 
 Features
 - Add events like `"Meeting with a friend tomorrow at 3 PM"`  
